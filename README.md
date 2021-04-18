@@ -1,5 +1,5 @@
 # KarelChallenge
 Karel challenge code
 
--pip install keyboard
--pip install pyperclip
+pip install keyboard
+pip install pyperclip
