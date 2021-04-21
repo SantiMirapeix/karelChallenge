@@ -1,133 +1,146 @@
-from tkinter import *
-from PIL import ImageTk, Image
 import pyperclip
 import keyboard
 
-root = Tk()
-root.geometry("480x480")
-root.attributes('-alpha', 0.5)
-root.title("Karel Hack")
-root.resizable(False, False)
-img = ImageTk.PhotoImage(Image.open("C:/Code/Pyhton/KarelChallenge/test.png"))
-label = Label(image = img)
-label.pack()
-#root.mainloop() 
-
-
-
 global file
-file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "w")
+file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "w")
 
 
 rotation = ""
 
+'''
+function m(){
+  if(frontIsClear()){
+	move();
+  }
+  else if(isRemovableWall()){
+    removeWall();
+    move();
+  }
+  if(beepersPresent()){pickBeeper();}
+  if(trayPresent()){
+    if(trayIsMine()){
+      while(trayNotFull()){
+        if(beepersInBag()){
+          putBeeperInTray();
+        }
+      }
+    }
+  }
+  if(exitPresent()){
+    exit();
+  }
+
+}
+
+'''
 
 def wPressed():
     global rotation
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "a")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "a")
     if rotation == "down":
-        file.write("\nturnAround();" + "\nmove();")
+        file.write("\nturnAround();" + "\nm();")
         rotation = "up"
     elif rotation == "left":
-        file.write("\nturnRight();" + "\nmove();")
+        file.write("\nturnRight();" + "\nm();")
         rotation = "up"
     elif rotation == "right":
-        file.write("\nturnLeft();" + "\nmove();")
+        file.write("\nturnLeft();" + "\nm();")
         rotation = "up"
     else:
-        file.write("\nmove();")
+        file.write("\nm();")
     file.close()
 
 def aPressed():
     global rotation
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "a")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "a")
     if rotation == "down":
-        file.write("\nturnRight();" + "\nmove();")
+        file.write("\nturnRight();" + "\nm();")
         rotation = "left"
     elif rotation == "up":
-        file.write("\nturnLeft();" + "\nmove();")
+        file.write("\nturnLeft();" + "\nm();")
         rotation = "left"
     elif rotation == "right":
-        file.write("\nturnAround();" + "\nmove();")
+        file.write("\nturnAround();" + "\nm();")
         rotation = "left"
     else:
-        file.write("\nmove();")
+        file.write("\nm();")
     file.close()
 
 def sPressed():
     global rotation
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "a")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "a")
     if rotation == "up":
-        file.write("\nturnAround();" + "\nmove();")
+        file.write("\nturnAround();" + "\nm();")
         rotation = "down"
     elif rotation == "left":
-        file.write("\nturnLeft();" + "\nmove();")
+        file.write("\nturnLeft();" + "\nm();")
         rotation = "down"
     elif rotation == "right":
-        file.write("\nturnRight();" + "\nmove();")
+        file.write("\nturnRight();" + "\nm();")
         rotation = "down"
     else:
-        file.write("\nmove();")
+        file.write("\nm();")
     file.close()
 
 def dPressed():
     global rotation
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "a")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "a")
     if rotation == "down":
-        file.write("\nturnLeft();" + "\nmove();")
+        file.write("\nturnLeft();" + "\nm();")
         rotation = "right"
     elif rotation == "left":
-        file.write("\nturnAround();" + "\nmove();")
+        file.write("\nturnAround();" + "\nm();")
         rotation = "right"
     elif rotation == "up":
-        file.write("\nturnRight();" + "\nmove();")
+        file.write("\nturnRight();" + "\nm();")
         rotation = "right"
     else:
-        file.write("\nmove();")
+        file.write("\nm();")
     file.close()
 
 def enterPressed():
     global rotation
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "r")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "r")
     pyperclip.copy(file.read())
     file.close()
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "w")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "w")
     file.write("")
+    file.close()
 
 def backspacePressed():
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "r")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "r")
     lines = file.readlines()
     del lines[len(lines) - 1]
     backRes = ""
     for line in lines:
         backRes += line
     file.close()
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "w")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "w")
     file.write(backRes)
     file.close()
 
 def globalReset():
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "a")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "a")
     file.write("\nglobalReset();")
     file.close()
 
 def remove():
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "a")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "a")
     file.write("\nRemoveWall();")
     file.close()
 
 def teleport(): 
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "a")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "a")
     file.write("\nteleport();")
     file.close()
 
 def beeper():
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "a")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "a")
     file.write("\npickBeeper();")
     file.close()
 
 def tray():
-    file = open("C:\\Code\\Pyhton\\KarelChallenge\\karelChallenge.txt", "a")
+    file = open("C:\\Code\\KarelChallenge\\karelChallenge.txt", "a")
     file.write("\nputBeeperInTray();")
     file.close()
 
@@ -157,8 +170,8 @@ while True:
             pass
         enterPressed()
 
-    if(keyboard.is_pressed('Backspace')):
-        while keyboard.is_pressed("Backspace"):
+    if(keyboard.is_pressed('p')):
+        while keyboard.is_pressed("p"):
             pass
         backspacePressed()
 #globalReset
@@ -207,4 +220,3 @@ while True:
             pass
         rotation = "left"
         
-    
