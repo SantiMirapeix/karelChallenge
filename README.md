@@ -1,6 +1,4 @@
 # KarelChallenge
 Karel challenge code
 
-pip install keyboard
-
-pip install pyperclip
+You need to install the keyboard library and the pyperclip library to run this code
